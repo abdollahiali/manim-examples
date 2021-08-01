@@ -27,3 +27,16 @@ class DrawSquareCircle2(Scene):
         self.play(Create(square))
         self.play(Create(circle))
        
+class LotsOfDots(Scene):
+    def construct(self):
+        dot = []
+        for i in range(8):
+            for j in range(4):
+                dot.append(Dot(point=i*LEFT+j*UP, color=BLUE))
+                dot.append(Dot(point=-i*LEFT+j*UP, color=BLUE))
+                dot.append(Dot(point=-i*LEFT-j*UP, color=BLUE))
+                dot.append(Dot(point=i*LEFT-j*UP, color=BLUE))
+        dot_org = Dot(point=ORIGIN, color=GREEN)
+        for d in dot:
+            self.add(d)
+        self.add(dot_org)
