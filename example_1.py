@@ -40,3 +40,14 @@ class DotExample(Scene):
         for d in dot:
             self.add(d)
         self.add(dot_org)
+        
+class AnnularSectorExample(Scene):
+    def construct(self):
+        st_angle = 0;
+        N = 2
+        angle = PI/N
+        for i in range(2*N):
+            sct = AnnularSector(inner_radius=1, outer_radius=1.2, start_angle=st_angle, angle=angle)
+            self.add(sct)
+            self.play(Create(sct))
+            st_angle = st_angle + angle
