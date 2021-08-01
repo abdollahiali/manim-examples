@@ -27,7 +27,7 @@ class DrawSquareCircle2(Scene):
         self.play(Create(square))
         self.play(Create(circle))
        
-class LotsOfDots(Scene):
+class DotExample(Scene):
     def construct(self):
         dot = []
         for i in range(8):
