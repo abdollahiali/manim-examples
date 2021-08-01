@@ -41,6 +41,22 @@ class DotExample(Scene):
             self.add(d)
         self.add(dot_org)
         
+class DotCoordExample(Scene): 
+    def construct(self):
+        dot_dict = dict()
+        for x in range(-3, 4, 3):
+            for y in range(-3, 4, 3):
+                dot_dict[Text(f"({x}, {y})")] = Dot(np.array([x, y, 0]))
+    
+        for key in dot_dict:
+            dot = dot_dict[key]
+            coord = key
+            self.add(dot) # adding dot
+            self.add(coord) 
+            coord.move_to(dot.get_center())
+            self.wait(0.5)
+            self.remove(coord)
+        
 class AnnularSectorExample(Scene):
     def construct(self):
         st_angle = 0;
