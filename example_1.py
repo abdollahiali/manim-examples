@@ -101,3 +101,22 @@ class TransformExample(Scene):
         self.play(Create(triangle))
         self.play(Transform(triangle, square))
         self.play(Transform(triangle, circle))
+        
+class ShapesExample(Scene):
+    def construct(self):
+        circle = Circle()
+        square = Square()
+        triangle = Triangle()
+
+        self.add(circle, square, triangle)
+        for i in range(20):
+            circle.shift(0.1*LEFT)
+            square.shift(0.1*UP)
+            triangle.shift(0.1*RIGHT)
+            self.wait(0.05)
+        self.wait()
+        for i in range(20):
+            circle.shift(0.1*RIGHT)
+            square.shift(0.1*DOWN)
+            triangle.shift(0.1*LEFT)
+            self.wait(0.05)
