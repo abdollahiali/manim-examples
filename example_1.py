@@ -79,6 +79,7 @@ class PythagoreanTheoremExample(Scene):
         sq1 = Square(side_length=1.2, color=GREEN_C).next_to(l1, DOWN, buff=0.01)
         sq2 = Square(side_length=1.6, color=GREEN_C).next_to(l2, LEFT, buff=0.01)
         sq3 = Square(side_length=2.0, color=GREEN_C).next_to(l3, UR)
+        Rotate(sq3, PI/2)
         
 
         self.add(d0)
@@ -90,3 +91,13 @@ class PythagoreanTheoremExample(Scene):
         self.add(sq1)
         self.add(sq2)
         self.add(sq3)
+        
+class TransformExample(Scene):
+    def construct(self):
+        circle = Circle(color=RED).set_fill(color=RED, opacity=0.3)
+        square = Square(color=BLUE).set_fill(color=BLUE, opacity=0.3)
+        triangle = Triangle(color=GREEN).set_fill(color=GREEN, opacity=0.3)
+        
+        self.play(Create(triangle))
+        self.play(Transform(triangle, square))
+        self.play(Transform(triangle, circle))
