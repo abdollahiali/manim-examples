@@ -67,3 +67,26 @@ class AnnularSectorExample(Scene):
             self.add(sct)
             self.play(Create(sct))
             st_angle = st_angle + angle
+            
+class PythagoreanTheoremExample(Scene): 
+    def construct(self):
+        d0 = Dot()
+        d1 = Dot(point = np.array([1.2, 0, 0]))
+        d2 = Dot(point = np.array([0, 1.6, 0]))
+        l1 = Line(d0, d1, color=GREEN)
+        l2 = Line(d0, d2, color=GREEN)
+        l3 = Line(d1, d2, color=BLUE)
+        sq1 = Square(side_length=1.2, color=GREEN_C).next_to(l1, DOWN, buff=0.01)
+        sq2 = Square(side_length=1.6, color=GREEN_C).next_to(l2, LEFT, buff=0.01)
+        sq3 = Square(side_length=2.0, color=GREEN_C).next_to(l3, UR)
+        
+
+        self.add(d0)
+        self.add(d1)
+        self.add(d2)
+        self.add(l1)
+        self.add(l2)
+        self.add(l3)
+        self.add(sq1)
+        self.add(sq2)
+        self.add(sq3)
