@@ -70,27 +70,46 @@ class AnnularSectorExample(Scene):
             
 class PythagoreanTheoremExample(Scene): 
     def construct(self):
-        d0 = Dot()
-        d1 = Dot(point = np.array([1.2, 0, 0]))
-        d2 = Dot(point = np.array([0, 1.6, 0]))
-        l1 = Line(d0, d1, color=GREEN)
-        l2 = Line(d0, d2, color=GREEN)
-        l3 = Line(d1, d2, color=BLUE)
-        sq1 = Square(side_length=1.2, color=GREEN_C).next_to(l1, DOWN, buff=0.01)
-        sq2 = Square(side_length=1.6, color=GREEN_C).next_to(l2, LEFT, buff=0.01)
-        sq3 = Square(side_length=2.0, color=GREEN_C).next_to(l3, UR)
-        Rotate(sq3, PI/2)
+        a = 1
+        b = 2
+        c = np.sqrt(a**2 + b**2)
         
-
-        self.add(d0)
-        self.add(d1)
-        self.add(d2)
+        d0 = Dot()
+        d1 = Dot(point = np.array([a, 0, 0]))
+        d2 = Dot(point = np.array([0, b, 0]))
+        l1 = Line(d0, d1, color=BLUE)
+        l2 = Line(d0, d2, color=GREEN)
+        l3 = Line(d1, d2, color=RED)
+        sq1 = Square(side_length=a, color=BLUE).next_to(l1, DOWN, buff=0.01)
+        sq2 = Square(side_length=b, color=GREEN).next_to(l2, LEFT, buff=0.01)
+        sq3 = Square(side_length=c, color=RED)
+        
+        self.add(d0, d1, d2)
+        
         self.add(l1)
+        self.play(Create(l1))
+
         self.add(l2)
-        self.add(l3)
-        self.add(sq1)
-        self.add(sq2)
-        self.add(sq3)
+        self.play(Create(l2))
+
+        self.wait(0.2)
+        self.play(Create(l3))
+        
+        sq1.set_fill(color=BLUE, opacity=0.3)
+        self.wait(0.2)
+        self.play(Create(sq1))
+        
+        sq2.set_fill(color=GREEN, opacity=0.3)
+        self.wait(0.2)
+        self.play(Create(sq2))
+        
+        sq3.rotate(np.arctan(a/b))
+        x = a + c/2*np.sqrt(2)*np.sin(np.pi/4-np.arctan(a/b))
+        y = c/2*np.sqrt(2)*np.cos(np.pi/4-np.arctan(a/b))
+        sq3.move_to([x, y, 0])
+        sq3.set_fill(color=RED, opacity=0.3)
+        self.wait(0.2)
+        self.play(Create(sq3))
         
 class TransformExample(Scene):
     def construct(self):
