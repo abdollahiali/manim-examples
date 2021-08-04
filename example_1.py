@@ -100,13 +100,13 @@ class PythagoreanTheoremExample(Scene):
         
         sq1.set_fill(color=BLUE, opacity=0.3)
         self.wait(0.2)
-        self.play(Create(sq1))
+        self.play(DrawBorderThenFill(sq1))
         txt_a2 = MathTex('a^2').scale(0.7).move_to(sq1)
         self.add(txt_a2)
         
         sq2.set_fill(color=GREEN, opacity=0.3)
         self.wait(0.2)
-        self.play(Create(sq2))
+        self.play(DrawBorderThenFill(sq2))
         txt_b2 = MathTex('b^2').scale(0.7).move_to(sq2)
         self.add(txt_b2)
         
@@ -116,7 +116,7 @@ class PythagoreanTheoremExample(Scene):
         sq3.move_to([x, y, 0])
         sq3.set_fill(color=RED, opacity=0.3)
         self.wait(0.2)
-        self.play(Create(sq3))
+        self.play(DrawBorderThenFill(sq3))
         txt_c2 = MathTex('c^2').scale(0.7).move_to(sq3)
         self.add(txt_c2)
         
